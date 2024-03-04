@@ -69,6 +69,8 @@ curl -X POST https://api.digifarm.io/deep-resolution/available_dates \
  }'
 ```
 
+Initially you'll get an immediate feedback like the one below
+
 **Response**
 
 *   `statusCode`: \[string\] The status of the request.
@@ -78,6 +80,20 @@ curl -X POST https://api.digifarm.io/deep-resolution/available_dates \
 *   `version`: \[string\] API version number
 
 *   `timestamp`: \[datetime\] The ID of the initiated task.
+
+```json
+
+{
+    "statusCode":200,
+    "data":
+        {
+            "message":"Fetching available dates, callback url will be called to https://webhook.site/eccf1ed3-d2b2-4190-bf86-62f08e9bda3a when done",
+            "version":"v1.0",
+            "timestamp":"2024-03-04T13:18:19.557515"
+        }
+```
+
+Later after successful execution, your endpoint will be called and you'll get the one below 
 
 ```json
 
@@ -459,7 +475,7 @@ If there's an error during the processing of the task, the webhook request will 
 
 ## FAQ
 
-**Q: What HTTP status codes should I return?** Our service considers any status code between 200 and 299 as a success. Other status codes will be considered as a failure, and we will retry the delivery.
+**Q: What HTTP status codes should I return?** Our service considers any status code between 200 and 299 as a success. Other status codes will be considered as a failure.
 
 **Q: How can I verify that the request came from your service?** We include a signature in each HTTP header. You can use this signature to verify that the request came from our service.
 
