@@ -100,8 +100,8 @@ Later after successful execution, your endpoint will be called and you'll get th
 {
     "statusCode":200,
     "data": {
-        "output": [
-        {
+        "area_hectares": 924.1013977515,
+        "available_dates": [{
             "cloud_cover": 1,
             "data_source": "S2B_32VPN_20231001_0_L2A",
             "date": "2023-10-01T00:00:00.000Z",
@@ -133,6 +133,7 @@ Later after successful execution, your endpoint will be called and you'll get th
         },
         ...],
     "version":"v1.0",
+    "status": "SUCCESS",
     "timesetamp":"2023-08-02T03:17:23.340688"
 }
 ```
@@ -258,11 +259,11 @@ Important to note that the processing endpoint (/deep-resolution) has a guard co
 ```
 
 
-### POST /deep-resolution/status/{job_id}
+### GET /deep-resolution/status/{job_id}
 
 This endpoint provides available dates for deep resolution imagery within a specified bounding box and time range.
 
-#### Request URL `POST https://api.digifarm.io/deep-resolution/status/{job_id}`
+#### Request URL `GET https://api.digifarm.io/deep-resolution/status/{job_id}`
 
 **Method**: GET
 
